@@ -16,21 +16,41 @@ export function FeaturedMovie() {
                     title="Stranger Things"
                     originInfo="USA, 2016 - Current"
                     imgUrl={strangerThingsImg}
+                    genres="Action, Adventure, Horror"
+                    ratings={{
+                        imdb: 86.0,
+                        rotten: 97
+                    }}
                 />
                 <MovieCard
                     title="Batman Begins"
                     originInfo="USA, 2005 "
                     imgUrl={batmanBeginsImg}
+                    genres="Action, Adventure "
+                    ratings={{
+                        imdb: 82.0,
+                        rotten: 70
+                    }}
                 />
                 <MovieCard
                     title="Spider-Man: Into The Spider Verse"
                     originInfo="USA, 2018 "
                     imgUrl={spidermanImg}
+                    genres="Animation, Action, Adventure"
+                    ratings={{
+                        imdb: 84.0,
+                        rotten: 87 
+                    }}
                 />
                 <MovieCard
                     title="Dunkirk"
                     originInfo="USA, 2017"
                     imgUrl={dunkirkImg}
+                    genres="Action, Drama, History"
+                    ratings={{
+                        imdb: 78.0,
+                        rotten: 94
+                    }}
                 />
             </MoviesContainer>
         </Container>

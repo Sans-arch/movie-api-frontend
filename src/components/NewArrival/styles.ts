@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-    margin-bottom: 70px;
+    /* border: 2px solid red; */
 
     h2 {
         font-size: 36px;
@@ -13,6 +13,8 @@ export const Container = styled.section`
 `;
 
 export const MoviesContainer = styled.div`
+    /* border: 2px solid blue; */
     display: flex;
+
     gap: 80px;
 `;
