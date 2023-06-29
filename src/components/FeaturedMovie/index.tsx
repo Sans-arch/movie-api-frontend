@@ -1,5 +1,6 @@
+import { BsChevronRight } from 'react-icons/bs';
 import { MovieCard } from "../MovieCard";
-import { Container, MoviesContainer } from "./styles";
+import { Container, MoviesContainer, Title } from "./styles";
 
 import batmanBeginsImg from '../../assets/images/batman_begins.png';
 import dunkirkImg from '../../assets/images/dunkirk.png';
@@ -9,7 +10,13 @@ import strangerThingsImg from '../../assets/images/stranger_things.png';
 export function FeaturedMovie() {
     return (
         <Container>
-            <h2>Featured Movie</h2>
+            <Title>
+                <h2>Featured Movie</h2>
+                <p>
+                    See more
+                    <BsChevronRight />
+                </p>
+            </Title>
 
             <MoviesContainer>
                 <MovieCard
@@ -39,7 +46,7 @@ export function FeaturedMovie() {
                     genres="Animation, Action, Adventure"
                     ratings={{
                         imdb: 84.0,
-                        rotten: 87 
+                        rotten: 87
                     }}
                 />
                 <MovieCard
