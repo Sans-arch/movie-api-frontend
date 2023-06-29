@@ -1,14 +1,14 @@
 import { FeaturedMovie } from "../components/FeaturedMovie";
+import { Footer } from "../components/Footer";
 import { NewArrival } from "../components/NewArrival";
 import { Container } from "./styles";
 
 export function Layout() {
     return (
-        <div>
-            <Container>
-                <FeaturedMovie />
-                <NewArrival />
-            </Container>
-        </div>
+        <Container>
+            <FeaturedMovie />
+            <NewArrival />
+            <Footer />
+        </Container>
     )
 }
