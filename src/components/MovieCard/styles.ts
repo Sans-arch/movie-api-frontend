@@ -8,10 +8,9 @@ export const Container = styled.div`
     width: 250px;
     box-sizing: border-box;
     overflow: hidden;
-    /* border: 2px solid green; */
 
     img {
-        width: 250px;
+        width: 100%;
     }
 
     p {
@@ -40,8 +39,6 @@ export const Rating = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    /* margin-top: 12px; */
-    /* border: 1px solid red; */
 `;
 
 export const ImdbRating = styled.div`

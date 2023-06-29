@@ -4,12 +4,10 @@ export const Container = styled.footer`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 60%;
     margin: auto;
     margin-top: 120px;
     margin-bottom: 62px;
-
-    /* border: 2px solid red; */
 `;
 
 export const SocialMedia = styled.div`
