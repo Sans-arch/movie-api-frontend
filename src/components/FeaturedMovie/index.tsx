@@ -2,12 +2,21 @@ import { BsChevronRight } from 'react-icons/bs';
 import { MovieCard } from "../MovieCard";
 import { Container, MoviesContainer, Title } from "./styles";
 
+import { useEffect } from 'react';
 import batmanBeginsImg from '../../assets/images/batman_begins.png';
 import dunkirkImg from '../../assets/images/dunkirk.png';
 import spidermanImg from '../../assets/images/spiderman.png';
 import strangerThingsImg from '../../assets/images/stranger_things.png';
+import apiCaller from '../../services/api';
 
 export function FeaturedMovie() {
+
+    useEffect(() => {
+        apiCaller.get('/')
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+    }, []);
+
     return (
         <Container>
             <Title>
