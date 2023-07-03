@@ -1,6 +1,7 @@
 import { BsChevronRight } from 'react-icons/bs';
 import { Container, MoviesContainer, Title } from "./styles";
 
+import { CircularProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
 import apiCaller from '../../services/api';
 import { MovieCard } from '../MovieCard';
@@ -36,6 +37,9 @@ export function FeaturedMovie() {
             </Title>
 
             <MoviesContainer>
+                {!movies.length && (
+                    <CircularProgress />
+                )}
                 {movies.map(movie => (
                     <MovieCard
                         key={movie.id}
