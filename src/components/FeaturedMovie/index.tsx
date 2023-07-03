@@ -1,19 +1,27 @@
 import { BsChevronRight } from 'react-icons/bs';
-import { MovieCard } from "../MovieCard";
 import { Container, MoviesContainer, Title } from "./styles";
 
-import { useEffect } from 'react';
-import batmanBeginsImg from '../../assets/images/batman_begins.png';
-import dunkirkImg from '../../assets/images/dunkirk.png';
-import spidermanImg from '../../assets/images/spiderman.png';
-import strangerThingsImg from '../../assets/images/stranger_things.png';
+import { useEffect, useState } from 'react';
 import apiCaller from '../../services/api';
+import { MovieCard } from '../MovieCard';
+
+interface IMovie {
+    id: number;
+    genres: string;
+    imdbRating: number;
+    name: string;
+    originInfo: string;
+    posterUrl: string;
+    rottenRating: number;
+}
 
 export function FeaturedMovie() {
+    const [movies, setMovies] = useState<IMovie[]>([]);
 
     useEffect(() => {
-        apiCaller.get('/')
-            .then(response => console.log(response))
+        apiCaller.get('/movies')
+            .then(response => response.data)
+            .then(data => setMovies(data))
             .catch(error => console.log(error));
     }, []);
 
@@ -28,46 +36,19 @@ export function FeaturedMovie() {
             </Title>
 
             <MoviesContainer>
-                <MovieCard
-                    title="Stranger Things"
-                    originInfo="USA, 2016 - Current"
-                    imgUrl={strangerThingsImg}
-                    genres="Action, Adventure, Horror"
-                    ratings={{
-                        imdb: 86.0,
-                        rotten: 97
-                    }}
-                />
-                <MovieCard
-                    title="Batman Begins"
-                    originInfo="USA, 2005 "
-                    imgUrl={batmanBeginsImg}
-                    genres="Action, Adventure "
-                    ratings={{
-                        imdb: 82.0,
-                        rotten: 70
-                    }}
-                />
-                <MovieCard
-                    title="Spider-Man: Into The Spider Verse"
-                    originInfo="USA, 2018 "
-                    imgUrl={spidermanImg}
-                    genres="Animation, Action, Adventure"
-                    ratings={{
-                        imdb: 84.0,
-                        rotten: 87
-                    }}
-                />
-                <MovieCard
-                    title="Dunkirk"
-                    originInfo="USA, 2017"
-                    imgUrl={dunkirkImg}
-                    genres="Action, Drama, History"
-                    ratings={{
-                        imdb: 78.0,
-                        rotten: 94
-                    }}
-                />
+                {movies.map(movie => (
+                    <MovieCard
+                        key={movie.id}
+                        title={movie.name}
+                        originInfo={movie.originInfo}
+                        imgUrl={movie.posterUrl}
+                        genres={movie.genres}
+                        ratings={{
+                            imdb: movie.imdbRating,
+                            rotten: movie.rottenRating
+                        }}
+                    />
+                ))}
             </MoviesContainer>
         </Container>
     )
