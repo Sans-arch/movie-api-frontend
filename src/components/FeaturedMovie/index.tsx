@@ -8,11 +8,13 @@ import { MovieCard } from '../MovieCard';
 
 interface IMovie {
     id: number;
-    genres: string;
-    imdbRating: number;
-    name: string;
+    title: string;
     originInfo: string;
+    releaseYear: number;
+    genres: string;
+    director: string;
     posterUrl: string;
+    imdbRating: number;
     rottenRating: number;
 }
 
@@ -20,7 +22,7 @@ export function FeaturedMovie() {
     const [movies, setMovies] = useState<IMovie[]>([]);
 
     useEffect(() => {
-        apiCaller.get('/movies')
+        apiCaller.get('/movies/featured')
             .then(response => response.data)
             .then(data => setMovies(data))
             .catch(error => console.log(error));
@@ -40,19 +42,23 @@ export function FeaturedMovie() {
                 {!movies.length && (
                     <CircularProgress />
                 )}
-                {movies.map(movie => (
-                    <MovieCard
-                        key={movie.id}
-                        title={movie.name}
-                        originInfo={movie.originInfo}
-                        imgUrl={movie.posterUrl}
-                        genres={movie.genres}
-                        ratings={{
-                            imdb: movie.imdbRating,
-                            rotten: movie.rottenRating
-                        }}
-                    />
-                ))}
+                {movies.map(movie => {
+                    console.log(movie);
+
+                    return (
+                        <MovieCard
+                            key={movie.id}
+                            title={movie.title}
+                            originInfo={movie.originInfo}
+                            imgUrl={movie.posterUrl}
+                            genres={movie.genres}
+                            ratings={{
+                                imdb: movie.imdbRating,
+                                rotten: movie.rottenRating
+                            }}
+                        />
+                    );
+                })}
             </MoviesContainer>
         </Container>
     )

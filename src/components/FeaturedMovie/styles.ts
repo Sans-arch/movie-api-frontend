@@ -6,6 +6,7 @@ export const Container = styled.section`
 
 export const MoviesContainer = styled.div`
     display: flex;
+    flex-wrap: wrap;
     gap: 80px;
 `;
 
